@@ -1,0 +1,61 @@
+Estrutura Livro
+    título: String
+    autor: String
+    emprestado: Boolean
+
+
+Lista livros
+
+
+Função RegistrarLivro(título: String, autor: String)
+    livro = Novo Livro
+    livro.título = título
+    livro.autor = autor
+    livro.emprestado = Falso
+    Adicionar livro a livros
+    Escrever "Livro registrado com sucesso."
+
+
+Função EmprestarLivro(título: String)
+    Para cada livro em livros
+        Se livro.título == título Então
+            Se livro.emprestado == Falso Então
+                livro.emprestado = Verdadeiro
+                Escrever "Livro emprestado com sucesso."
+                Retornar
+            Senão
+                Escrever "Livro já está emprestado."
+                Retornar
+    Escrever "Livro não encontrado."
+
+
+Função DevolverLivro(título: String)
+    Para cada livro em livros
+        Se livro.título == título Então
+            Se livro.emprestado == Verdadeiro Então
+                livro.emprestado = Falso
+                Escrever "Livro devolvido com sucesso."
+                Retornar
+            Senão
+                Escrever "O livro não estava emprestado."
+                Retornar
+    Escrever "Livro não encontrado."
+
+
+
+Função ListarLivrosDisponíveis()
+    livrosDisponíveis = Falso
+    Para cada livro em livros
+        Se livro.emprestado == Falso Então
+            Escrever "Título: " + livro.título + ", Autor: " + livro.autor
+            livrosDisponíveis = Verdadeiro
+    Se livrosDisponíveis == Falso Então
+        Escrever "Nenhum livro disponível no momento."
+
+
+RegistrarLivro("O Senhor dos Anéis", "J.R.R. Tolkien")
+RegistrarLivro("1984", "George Orwell")
+EmprestarLivro("1984")
+ListarLivrosDisponíveis()
+DevolverLivro("1984")
+ListarLivrosDisponíveis()
